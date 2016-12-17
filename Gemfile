@@ -55,7 +55,8 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # Utils
 gem 'active_model_serializers'
-gem 'grabbit'
+gem 'opengraph_parser', :git => 'https://github.com/stephencarr/opengraph_parser.git'
+gem 'paranoia', '~> 2.2'
 
 # Mailer
 gem 'sendgrid-ruby'
