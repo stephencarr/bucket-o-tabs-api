@@ -10,6 +10,9 @@ class LinkGenerateMetaJob < ApplicationJob
         link.images = data.images
         link.title = data.title
         link.url = data.url
+        link.images.each do | key, value |
+          link.send("image_#{key}=".to_sym, URI.parse(value)) unless value.blank?
+        end
         link.save!
     end
   end

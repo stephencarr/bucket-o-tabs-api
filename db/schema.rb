@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215235918) do
+ActiveRecord::Schema.define(version: 20161217210045) do
 
   create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "title",       limit: 65535
+    t.text     "title",                  limit: 65535
     t.json     "images"
     t.string   "url"
     t.string   "digest"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.text     "description", limit: 65535
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.text     "description",            limit: 65535
+    t.string   "image_og_file_name"
+    t.string   "image_og_content_type"
+    t.integer  "image_og_file_size"
+    t.datetime "image_og_updated_at"
+    t.string   "image_fav_file_name"
+    t.string   "image_fav_content_type"
+    t.integer  "image_fav_file_size"
+    t.datetime "image_fav_updated_at"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
