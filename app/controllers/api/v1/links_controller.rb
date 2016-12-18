@@ -3,12 +3,13 @@ module Api::V1
     def create
       # TODO Auth, or generate forward URL with ID to auth
       @link = Link.find_or_create_by(link_params)
+      User.find(1).links << @link
       # TODO stantardize this response pattern
-      # TODO make data go through serializer
+      # TODO make payload go through serializer
       if @link.save
-        render json: { status: status, data: @link }
+        render json: { success: true, payload: @link }
       else
-        render json: { status: 400, message: @link.errors.full_messages.as_json }, status: 400
+        render json: { success: false, errors: @link.errors.full_messages.as_json }, status: 400
       end
     end
 

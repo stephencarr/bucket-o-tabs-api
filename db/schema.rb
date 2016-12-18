@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218004521) do
+ActiveRecord::Schema.define(version: 20161218223909) do
 
   create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "title",                  limit: 65535
@@ -28,15 +28,16 @@ ActiveRecord::Schema.define(version: 20161218004521) do
     t.string   "image_fav_content_type"
     t.integer  "image_fav_file_size"
     t.datetime "image_fav_updated_at"
+    t.index ["url"], name: "index_links_on_url", using: :btree
   end
 
-  create_table "user_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "links_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "link_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["link_id"], name: "index_user_links_on_link_id", using: :btree
-    t.index ["user_id"], name: "index_user_links_on_user_id", using: :btree
+    t.index ["link_id"], name: "index_links_users_on_link_id", using: :btree
+    t.index ["user_id"], name: "index_links_users_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -67,6 +68,4 @@ ActiveRecord::Schema.define(version: 20161218004521) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
-  add_foreign_key "user_links", "links"
-  add_foreign_key "user_links", "users"
 end

@@ -76,13 +76,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-
-  config.action_mailer.default_url_options = { :host => 'api.bucket-o-tabs.com' }
+  config.action_mailer.default_url_options = { :host => 'api.yooarrell.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'bucket-o-tabs.com',
+    :domain => 'yooarrell.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,

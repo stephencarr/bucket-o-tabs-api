@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   Rails.application.configure do
-    config.action_mailer.default_url_options = { :host => 'api.me.dev' }
+    config.action_mailer.default_url_options = { :host => 'api.yooarrell.dev' }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       :address => 'localhost',
