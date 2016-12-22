@@ -8,7 +8,6 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
-/config/application.yml
 **.orig
 rerun.txt
 pickle-email-*.html
@@ -45,3 +44,6 @@ bower.json
 .byebug_history
 
 .DS_Store
+
+# Ignore application configuration
+/config/application.yml
