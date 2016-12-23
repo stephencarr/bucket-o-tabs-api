@@ -15,7 +15,7 @@ class LinkGenerateMetaJob < ApplicationJob
             link.send("image_#{key}=".to_sym, URI.parse(value)) unless value.blank?
             link.save
           rescue StandardError => e
-            log "LinkGenerateMetaJob: #{e.message}"
+            # log "LinkGenerateMetaJob: #{e.message}"
           end
         end
         link.save!

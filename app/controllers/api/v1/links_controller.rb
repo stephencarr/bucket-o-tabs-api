@@ -1,7 +1,6 @@
 module Api::V1
   class LinksController < ApplicationController
     before_action :authenticate_v1_user!
-    before_filter :require_no_authentication, only: :create
 
     def index
       authenticate_v1_user!
@@ -28,7 +27,9 @@ module Api::V1
 
     private
       def link_params
-        params.require(:link).permit(:url)
+        params.require(:data)
+          .require(:attributes)
+          .permit(:url, :title, :description)
       end
   end
 end
