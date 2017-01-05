@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218223909) do
+ActiveRecord::Schema.define(version: 20170105035543) do
 
   create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "title",                  limit: 65535
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20161218223909) do
     t.string   "image_fav_content_type"
     t.integer  "image_fav_file_size"
     t.datetime "image_fav_updated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_links_on_deleted_at", using: :btree
     t.index ["url"], name: "index_links_on_url", using: :btree
   end
 

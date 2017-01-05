@@ -1,4 +1,5 @@
 class Link < ApplicationRecord
+  acts_as_paranoid
   has_and_belongs_to_many :users
   serialize :images, JSON   # Store images array as JSON in the database
   validates :url, presence: true, :format => URI::regexp(%w(http https))

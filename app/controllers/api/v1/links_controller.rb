@@ -29,6 +29,11 @@ module Api::V1
       end
     end
 
+    def destroy
+      @link = current_v1_user.links.find params[:id]
+      @link.destroy
+    end
+
     private
       def link_params
         params.require(:data)
