@@ -1,3 +1,6 @@
 class LinkSerializer < ActiveModel::Serializer
-  attributes :id, :created_at, :description, :image_fav, :image_og, :title, :url 
+  attributes :id, :created_at, :image_fav, :image_og, :description, :title, :url
+  def description
+    object.description.truncate(140)
+  end
 end

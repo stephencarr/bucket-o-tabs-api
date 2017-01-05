@@ -4,5 +4,6 @@ module Api::V1
   class ApiController < ApplicationController
     include DeviseTokenAuth::Concerns::SetUserByToken
     include ActionController::Serialization
+    include Rails::Pagination
   end
 end

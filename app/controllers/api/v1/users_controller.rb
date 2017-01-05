@@ -1,14 +1,13 @@
 module Api::V1
   class UsersController < ApplicationController
     before_action :authenticate_v1_user!
-    before_action :set_user, only: [:show]
-    def index
-      @users = User.all
-      render json: @users
+    before_action :set_user, only: [:show, :me, :the, :money]
+    def me
+      render json: @user
     end
     private
       def set_user
-        @user = User.find(params[:id])
+        @user = current_v1_user
       end
   end
 end

@@ -5,7 +5,11 @@ module Api::V1
     def index
       authenticate_v1_user!
       @links = current_v1_user.links
-      render json: @links
+      if params[:limit].present?
+        render json: @links.limit(params[:limit])
+      else
+        paginate json: @links, per_page: 10
+      end
     end
 
     def create

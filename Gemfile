@@ -61,3 +61,8 @@ gem 'paperclip', '~> 5.0'
 gem 'aws-sdk', '~> 2.3'
 gem "figaro"
 gem 'sendgrid-ruby'
+
+# Pagination
+gem 'grape', '>= 0.10.0'
+gem 'will_paginate'
+gem 'api-pagination'
