@@ -56,7 +56,6 @@ gem 'rack-cors', :require => 'rack/cors'
 # Utils
 gem 'active_model_serializers'
 gem 'opengraph_parser', :git => 'https://github.com/stephencarr/opengraph_parser.git'
-gem 'paranoia', '~> 2.2'
 gem 'paperclip', '~> 5.0'
 gem 'aws-sdk', '~> 2.3'
 gem "figaro"
