@@ -6,8 +6,16 @@ class Link < ApplicationRecord
   after_create :scrape_meta
   # TODO make related table to connect Link with User using soft-deletes (paranoia) on UserLinks
   # TODO make clean-up job to remove any orphan Links
-  has_attached_file :image_fav, default_url: ""
-  has_attached_file :image_og, default_url: ""
+  has_attached_file :image_fav, :styles => {
+    :tiny => "25x25#",
+    :thumbnail => "100x100#",
+    :small  => "150x150>",
+    :medium => "300x300>" }, default_url: ""
+  has_attached_file :image_og, :styles => {
+    :tiny => "25x25#",
+    :thumbnail => "100x100#",
+    :small  => "150x150>",
+    :medium => "300x300>" }, default_url: ""
   # Validate content type
   validates_attachment_content_type :image_fav, content_type: [/\Aimage/, /\Aoctet\-stream/]
   validates_attachment_content_type :image_og, content_type: [/\Aimage/, /\Aoctet\-stream/]
