@@ -4,7 +4,7 @@ module Api::V1
 
     def index
       authenticate_v1_user!
-      @links = current_v1_user.links
+      @links = current_v1_user.links.order(created_at: :desc)
       if params[:limit].present?
         render json: @links.limit(params[:limit])
       else

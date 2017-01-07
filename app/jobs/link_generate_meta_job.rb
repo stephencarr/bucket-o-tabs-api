@@ -1,11 +1,11 @@
 class LinkGenerateMetaJob < ApplicationJob
   queue_as :default
   # TODO scrape beta meta
-  def perform(url)
-    data = OpenGraph.new(url)
-    # TODO transload image to AWS bucket
-    if data
-        link = Link.find_by_url url
+  def perform(id)
+    link = Link.find id
+    begin
+      data = OpenGraph.new(link.url)
+      if data
         link.description = data.description
         link.images = data.images
         link.title = data.title
@@ -19,6 +19,9 @@ class LinkGenerateMetaJob < ApplicationJob
           end
         end
         link.save!
+      end
+    rescue
+      logger.debug "Link failed to fetch: #{link.url}"
     end
   end
 end
